@@ -1,0 +1,87 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchApplicant">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Applicant App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#applicant-list 				{ margin-bottom:30px; }
+		#applicant-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/datas.js"></script> <!-- load our data service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND DATA COUNT -->
+		<div class="jumbotron text-center">
+			<h1>Welcome to Onebitmedia <span class="label label-info">{{ datas.length }}</span></h1>
+		</div>
+
+		<!-- DATA LIST -->
+		<div id="applicant-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				<!-- LOOP OVER THE DATAS IN $scope.datas -->
+				<!-- <div class="checkbox" ng-repeat="applicant in datas">
+					<label>
+						<input type="checkbox" ng-click="deleteApplicant(applicant._id)"> {{ applicant.text }}
+					</label>
+				</div> -->
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+		<!-- FORM TO CREATE datas -->
+		<div id="applicant-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Name" ng-model="formData.name" required>
+						<input type="email" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
+						<input type="text" class="form-control input-lg text-center" placeholder="Phone Number" ng-model="formData.phone">
+						<input type="text" class="form-control input-lg text-center" placeholder="Github Account" ng-model="formData.github">
+						<input type="text" class="form-control input-lg text-center" placeholder="Twitter Account" ng-model="formData.twitter">
+
+					</div>
+
+					<!-- createapplicant() WILL CREATE NEW datas -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createApplicant()">Add</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="text-center text-muted">
+			<p>Visit our website <a href="http://onebitmedia.com">Onebitmedia.com</a></p>
+			<!-- <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-applicant-app-with-node-and-angular">tutorial</a>.</p> -->
+		</div>
+
+	</div>
+
+</body>
+</html>
