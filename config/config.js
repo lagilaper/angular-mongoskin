@@ -1,6 +1,6 @@
 module.exports = {
   common: {
-  	serverPort: 8080, 
+  	serverPort: 8484, 
     mongodb: {
     	port: 27017,
     	host: "localhost",
